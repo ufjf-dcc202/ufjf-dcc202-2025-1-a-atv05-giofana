@@ -1,12 +1,23 @@
+import { getTabuleiro, seleciona } from "./discos.js";
+
 const eH1 = document.querySelector("h1");
 eH1.textContent = "Ola Mundo!";
 
 const eTabuleiro = criaTabuleiro();
 document.body.append(eTabuleiro);
 
-for(let i=0; i<6; i++){
-    const disco1 = criaDisco(i<3?"branco":"preto", i);
+for(let i=0; i<7; i++){
+    const tabuleiro = getTabuleiro();
+    const disco1 = criaDisco(tabuleiro[i], i);
     eTabuleiro.append(disco1);
+    disco1.addEventListener("click", cliqueDisco());
+}
+
+function cliqueDisco(evento){
+    const posicao = Number(evento.target.dataset.posicao);
+    
+    console.log("Click na posição: "+posicao);
+    seleciona(posicao);
 }
 
 function criaTabuleiro(){
