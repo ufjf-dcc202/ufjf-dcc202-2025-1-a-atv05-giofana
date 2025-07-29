@@ -3,8 +3,11 @@ eH1.textContent = "Ola Mundo!";
 
 const eTabuleiro = criaTabuleiro();
 document.body.append(eTabuleiro);
-const disco1 = criaDisco("black");
-eTabuleiro.append(disco1);
+
+for(let i=0; i<6; i++){
+    const disco1 = criaDisco(i<3?"branco":"preto", i);
+    eTabuleiro.append(disco1);
+}
 
 function criaTabuleiro(){
     const eTabuleiro = document.createElement("div");
@@ -12,10 +15,11 @@ function criaTabuleiro(){
     return eTabuleiro;
 }
 
-function criaDisco(cor){
+function criaDisco(cor, posicao){
     const novoDisco = document.createElement("div");
     novoDisco.classList.add("disco");
     novoDisco.dataset.cor = cor;
+    novoDisco.dataset.posicao = posicao;
     return novoDisco;
 }
 
