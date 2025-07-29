@@ -1,12 +1,14 @@
 const tabuleiro = ['branco', 'branco', 'branco', '', 'preto', 'preto', 'preto'];
-
 let selecionado = null;
+
+export function getSelecionado(){
+    return selecionado;
+}
 
 export function seleciona(posicao){
     if(selecionado === null){
         selecionado = posicao;
-    }
-    else{
+    } else {
         if(selecionado === posicao){
             selecionado = null;
         }else{
@@ -18,6 +20,7 @@ export function seleciona(posicao){
 export function getTabuleiro(){
     return [...tabuleiro];
 }
+
 function mover(origem, destino){
     console.log(`Movendo de ${origem} para ${destino}`);
     if(tabuleiro[origem] === "") return;
